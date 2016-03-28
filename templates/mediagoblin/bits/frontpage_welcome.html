@@ -21,10 +21,9 @@
   {% else %}
     <div class="row foot">
       <div class="eleven columns">
-        <h1>{% trans %}Hi there, welcome to this MediaGoblin site!{% endtrans %}</h1>
-        <p>{% trans %}This site is running <a href="http://mediagoblin.org">MediaGoblin</a>, an extraordinarily great piece of media hosting software.{% endtrans %}</p>
+        <h1>{% trans %}Ol&aacute;, bem vinda(o) &agrave; Biblioteca Pirata&excl;{% endtrans %}</h1>
+        <p>{% trans %}Este site usa <a href="http://mediagoblin.org">MediaGoblin</a>, um programa excelente para hospedar, gerenciar e compartilhar documentos, imagens, e material audiovisual.{% endtrans %}</p>
         {% if auth %}
-        <p>{% trans %}To add your own media, place comments, and more, you can log in with your MediaGoblin account.{% endtrans %}</p>
         {% if allow_registration %}
           <p>{% trans %}Don't have one yet? It's easy!{% endtrans %}</p>
           <a class="button_action_highlight" href=
@@ -37,6 +36,10 @@
             >Create an account at this site</a>
             or
           {%- endtrans %}
+		{% else %}
+        <p>{% trans %}Para adicionar sua pr&oacute;pria m&iacute;dia, publicar coment&aacute;rios e mais outras coisas, de forma an&ocirc;nima voc&ecirc; pode entrar com os seguintes dados:{% endtrans %}</p>
+		<p><u>Usu&aacute;rio</u>: <b>pirata</b></p>
+		<p><u>Senha</u>: <b>naosouagente</b></p>
         {% endif %}
         {% endif %}
           {% trans %}
