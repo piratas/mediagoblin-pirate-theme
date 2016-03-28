@@ -17,34 +17,30 @@
 #}
 
 {% if request.user %}
-    <h1>{% trans %}Explore{% endtrans %}</h1>
+    <h1>Explore</h1>
   {% else %}
     <div class="row foot">
       <div class="eleven columns">
-        <h1>{% trans %}Ol&aacute;, bem vinda(o) &agrave; Biblioteca Pirata&excl;{% endtrans %}</h1>
-        <p>{% trans %}Este site usa <a href="http://mediagoblin.org">MediaGoblin</a>, um programa excelente para hospedar, gerenciar e compartilhar documentos, imagens, e material audiovisual.{% endtrans %}</p>
+        <h1>Ol&aacute;, bem vinda(o) &agrave; Biblioteca Pirata&excl;</h1>
+        <p>Este site usa <a href="http://mediagoblin.org">MediaGoblin</a>, um programa excelente para hospedar, gerenciar e compartilhar documentos, imagens, e material audiovisual.</p>
         {% if auth %}
         {% if allow_registration %}
-          <p>{% trans %}Don't have one yet? It's easy!{% endtrans %}</p>
+          <p>Don't have one yet? It's easy!</p>
           <a class="button_action_highlight" href=
             {% if persona_auth is defined %}
               "javascript:;" id="persona_login1"
             {% else %}
               "{{ request.urlgen('mediagoblin.auth.register') }}"
             {% endif %}
-            {% trans %}
             >Create an account at this site</a>
             or
-          {%- endtrans %}
 		{% else %}
-        <p>{% trans %}Para adicionar sua pr&oacute;pria m&iacute;dia, publicar coment&aacute;rios e mais outras coisas, de forma an&ocirc;nima voc&ecirc; pode entrar com os seguintes dados:{% endtrans %}</p>
+        <p>Para adicionar sua pr&oacute;pria m&iacute;dia, publicar coment&aacute;rios e mais outras coisas, de forma an&ocirc;nima voc&ecirc; pode entrar com os seguintes dados:</p>
 		<p><u>Usu&aacute;rio</u>: <b>pirata</b></p>
 		<p><u>Senha</u>: <b>naosouagente</b></p>
         {% endif %}
         {% endif %}
-          {% trans %}
             <a class="button_action" href="./auth/login">Entrar</a>
-          {%- endtrans %}
       </div>
       <div class="four columns offset-by-one">
         <img class="welcomeimage" src="{{ request.staticdirect('/images/home_goblin.png') }}">
