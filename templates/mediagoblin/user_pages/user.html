@@ -1,6 +1,6 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
-# Copyright (C) 2011-2014 MediaGoblin contributors.  See AUTHORS.
+# Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -54,7 +54,7 @@
         </p>
         <a href="{{ request.urlgen('mediagoblin.edit.profile',
                  user=user.username) }}" class="button_action">
-          <i class="fa fa-edit"></i> {%- trans %}Edit profile{% endtrans -%}
+          {%- trans %}Edit profile{% endtrans -%}
         </a>
     {% else %}
       <div class="profile_sidebar empty_space">
@@ -71,18 +71,18 @@
             (request.user.id == user.id or request.user.has_privilege('admin')) %}
         <a href="{{ request.urlgen('mediagoblin.edit.profile',
                  user=user.username) }}">
-          <i class="fa fa-edit"></i> {%- trans %}Edit profile{% endtrans -%}
+          {%- trans %}Edit profile{% endtrans -%}
         </a>
       {% endif %}
   {% endif %}
     <p>
       <a href="{{ request.urlgen('mediagoblin.user_pages.collection_list',
                                          user=user.username) }}">
-        <i class="fa fa-folder-open"></i>{%- trans %}Browse collections{% endtrans -%}
+        {%- trans %}Browse collections{% endtrans -%}
       </a>
     </p>
   </div>
-  </div>
+  </div><!--end six columns-->
   {% if media_entries.count() %}
     <div class="ten columns profile_showcase">
       {{ object_gallery(request, media_entries, pagination,
@@ -110,7 +110,7 @@
         </p>
         <a class="button_action"
            href="{{ request.urlgen('mediagoblin.submit.start') }}">
-          <i class="fa fa-picture-o"></i> {%- trans %}Add media{% endtrans -%}
+          {%- trans %}Add media{% endtrans -%}
         </a>
       </div>
     {% else %}

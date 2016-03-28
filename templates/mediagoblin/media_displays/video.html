@@ -1,6 +1,6 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
-# Copyright (C) 2011-2014 MediaGoblin contributors.  See AUTHORS.
+# Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -46,6 +46,7 @@
 {%- endblock %}
 
 {% block mediagoblin_media %}
+<div class="media_other_container">
   {% set display_type, display_path = media.get_display_media() %}
 
   <video controls
@@ -68,10 +69,11 @@
       http://getfirefox.com</a>!{%- endtrans -%}
     </div>
   </video>
+</div>
 {% endblock %}
 
 {% block mediagoblin_sidebar %}
-  <h3><i class="fa fa-download fa-fw"></i> {% trans %}Download{% endtrans %}</h3>
+  <h3>{% trans %}Download{% endtrans %}</h3>
   <ul>
     {% if 'original' in media.media_files %}
       <li>

@@ -37,11 +37,11 @@
       </p>
 
       <div class="form_submit_buttons">
-	<a class="button" href="{{ request.urlgen(
+	<a class="button_action" href="{{ request.urlgen(
                          'mediagoblin.user_pages.user_home',
                           user=user.username) }}">{% trans %}Cancel{% endtrans %}</a>
         {{ csrf_token }}
-        <input type="submit" value="{% trans %}Delete permanently{% endtrans %}" class="button" />
+        <input type="submit" value="{% trans %}Delete permanently{% endtrans %}" class="button_form button_warning" />
       </div>
     </div>
   </form>

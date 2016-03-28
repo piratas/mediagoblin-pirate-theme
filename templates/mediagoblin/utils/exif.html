@@ -1,6 +1,6 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
-# Copyright (C) 2011-2014 MediaGoblin contributors.  See AUTHORS.
+# Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -29,7 +29,7 @@
         and media.media_data
         and media.media_data.exif_all is defined
         and media.media_data.exif_all %}
-    <h3><i class="fa fa-camera fa-fw"></i> Camera Information</h3>
+    <h3>Camera Information</h3>
     <table id="exif_camera_information">
       <tbody>
       {% for label, value in media.exif_display_data_short().iteritems() %}
@@ -41,7 +41,7 @@
       </tbody>
     </table>
     <h3 id="exif_additional_info_button" class="button_action">
-      <i class="fa fa-info-circle fa-fw"></i> Additional Information
+      Additional Information
     </h3>
     <div id="exif_additional_info">
     <table class="exif_info">

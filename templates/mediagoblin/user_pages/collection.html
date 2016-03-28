@@ -1,6 +1,6 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
-# Copyright (C) 2011-2014 MediaGoblin contributors.  See AUTHORS.
+# Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -49,11 +49,11 @@
     {% set edit_url = request.urlgen('mediagoblin.edit.edit_collection',
                                      user=collection.get_creator.username,
                                      collection=collection.slug) %}
-    <a class="button_action" href="{{ edit_url }}"><i class="fa fa-edit"></i> {% trans %}Edit{% endtrans %}</a>
+    <a class="button_action" href="{{ edit_url }}">{% trans %}Edit{% endtrans %}</a>
     {% set delete_url = request.urlgen('mediagoblin.user_pages.collection_confirm_delete',
                           user=collection.get_creator.username,
                           collection=collection.slug) %}
-    <a class="button_action button_warning" href="{{ delete_url }}"><i class="fa fa-trash-o"></i> {% trans %}Delete{% endtrans %}</a>
+    <a class="button_action" href="{{ delete_url }}">{% trans %}Delete{% endtrans %}</a>
   {% endif %}
 
   <p>

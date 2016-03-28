@@ -29,8 +29,8 @@
       <h1>{% trans collection_title=collection.title %}Editing {{ collection_title }}{% endtrans %}</h1>
       {{ wtforms_util.render_divs(form) }}
       <div class="form_submit_buttons">
-        <a class="button" href="{{ collection.url_for_self(request.urlgen) }}">{% trans %}Cancel{% endtrans %}</a>
-        <input type="submit" value="{% trans %}Save changes{% endtrans %}" class="button" />
+        <a class="button_action" href="{{ collection.url_for_self(request.urlgen) }}">{% trans %}Cancel{% endtrans %}</a>
+        <input type="submit" value="{% trans %}Save changes{% endtrans %}" class="button_form" />
 	{{ csrf_token }}
       </div>
     </div>

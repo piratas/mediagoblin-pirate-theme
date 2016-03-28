@@ -9,7 +9,7 @@
         {% set media = comment.get_entry %}
         <li class="comment_wrapper">
             <div class="comment_author">
-                <i class="fa fa-comment-o"></i> 
+                <img src="{{ request.staticdirect('/images/icon_comment.png') }}" />
                 <a href="{{ request.urlgen('mediagoblin.user_pages.user_home',
                             user=comment_author.username) }}"
                     class="comment_authorlink">
@@ -36,7 +36,7 @@
         </li>
         {% endfor %}
     </ul>
-    <a href="{{ request.urlgen('mediagoblin.notifications.mark_all_comment_notifications_seen') }}?next={{
+    <a href="{{ request.urlgen('mediagoblin.notifications.mark_all_comment_notifications_seen') }}?next={{ 
       request.base_url|urlencode }}" id="mark_all_comments_seen">
       {% trans %}Mark all read{% endtrans %}
     </a>

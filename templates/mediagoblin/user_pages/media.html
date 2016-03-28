@@ -1,6 +1,6 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
-# Copyright (C) 2011-2014 MediaGoblin contributors.  See AUTHORS.
+# Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -40,7 +40,7 @@
               'mediagoblin.user_pages.user_home',
               user=media.get_uploader.username),
               username=media.get_uploader.username -%}
-    <i class="fa fa-asterisk"></i> Browsing media by <a href="{{user_url}}">{{username}}</a>
+    ❖ Browsing media by <a href="{{user_url}}">{{username}}</a>
     {%- endtrans -%}
   </p>
   <div class="five columns">
@@ -48,8 +48,8 @@
   </div>
 </div>
   <div class="media_pane eleven columns">
-    <div class="media_image_container">
-      {% block mediagoblin_media %}
+    {% block mediagoblin_media %}
+      <div class="media_image_container">
         {% set display_media = request.app.public_store.file_url(
                  media.get_display_media()[1]) %}
         {# if there's a medium file size, that means the medium size
@@ -69,8 +69,8 @@
                alt="{% trans media_title=media.title -%}
                       Image for {{ media_title }}{% endtrans %}" />
         {% endif %}
-      {% endblock %}
-    </div>
+      </div>
+    {% endblock %}
     <div class="row head foot">
     <h2 class="media_title">
       {{ media.title }}
@@ -82,11 +82,11 @@
       {% set edit_url = request.urlgen('mediagoblin.edit.edit_media',
                                  user= media.get_uploader.username,
                                  media_id=media.id) %}
-      <a class="button_action" href="{{ edit_url }}"><i class="fa fa-edit"></i> {% trans %}Edit{% endtrans %}</a>
+      <a class="button_action" href="{{ edit_url }}">{% trans %}Edit{% endtrans %}</a>
       {% set delete_url = request.urlgen('mediagoblin.user_pages.media_confirm_delete',
                                  user= media.get_uploader.username,
                                  media_id=media.id) %}
-      <a class="button_action button_warning" href="{{ delete_url }}"><i class="fa fa-trash-o"></i> {% trans %}Delete{% endtrans %}</a>
+      <a class="button_action button_warning" href="{{ delete_url }}">{% trans %}Delete{% endtrans %}</a>
       </div>
     {% endif %}
     {% autoescape False %}
@@ -102,7 +102,7 @@
                                                 request.base_url|urlencode }}"
           {% endif %}
           class="button_action" id="button_addcomment" title="Add a comment">
-          <i class="fa fa-comment"></i> {% trans %}Add a comment{% endtrans %}
+          {% trans %}Add a comment{% endtrans %}
         </a>
         {% include "mediagoblin/utils/comment-subscription.html" %}
 
@@ -132,7 +132,7 @@
             class="comment_wrapper">
           {%- endif %}
           <div class="comment_author">
-            <i class="fa fa-comment-o"></i> 
+            <img src="{{ request.staticdirect('/images/icon_comment.png') }}" />
             <a href="{{ request.urlgen('mediagoblin.user_pages.user_home',
                             user=comment_author.username) }}"
                class="comment_authorlink">
@@ -177,7 +177,7 @@
 
 
   <div class="five columns media_sidebar">
-    <h3><i class="fa fa-calendar fa-fw"></i> {% trans %}Added{% endtrans %}</h3>
+    <h3>{% trans %}Added{% endtrans %}</h3>
     <p><span title="{{ media.created.strftime("%I:%M%p %Y-%m-%d") }}">
         {%- trans formatted_time=timesince(media.created) -%}
           {{ formatted_time }} ago
@@ -202,7 +202,7 @@
     {% include "mediagoblin/utils/exif.html" %}
 
     {%- if media.attachment_files|count %}
-      <h3><i class="fa fa-paperclip fa-fw"></i> {% trans %}Attachments{% endtrans %}</h3>
+      <h3>{% trans %}Attachments{% endtrans %}</h3>
       <ul>
         {%- for attachment in media.attachment_files %}
           <li>
@@ -218,7 +218,7 @@
           and (media.uploader == request.user.id
                or request.user.has_privilege('admin')) %}
       {%- if not media.attachment_files|count %}
-        <h3><i class="fa fa-paperclip fa-fw"></i> {% trans %}Attachments{% endtrans %}</h3>
+        <h3>{% trans %}Attachments{% endtrans %}</h3>
       {%- endif %}
       <p>
         <a href="{{ request.urlgen('mediagoblin.edit.attachments',
@@ -236,7 +236,7 @@
     {% template_hook("location_info") %}
     {% template_hook("media_sideinfo") %}
 
-  </div>
+  </div><!--end media_sidebar-->
 
   <div class="clear"></div>
 {% endblock %}

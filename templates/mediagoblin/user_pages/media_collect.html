@@ -51,7 +51,7 @@
       {{- wtforms_util.render_label_p(form.collection) }}
       <div class="form_field_input">
 	{{ form.collection }}
-	<a class="button" id="button_addcollection">{% trans %}<i class="fa fa-plus-square"></i>{% endtrans %}</a>
+	<a class="button_action" id="button_addcollection">{% trans %}+{% endtrans %}</a>
       </div>
 
       <div id="new_collection" class="subform">
@@ -64,8 +64,8 @@
 
       <div class="form_submit_buttons">
         {# TODO: This isn't a button really... might do unexpected things :) #}
-	<a class="button" href="{{ media.url_for_self(request.urlgen) }}">{% trans %}Cancel{% endtrans %}</a>
-        <input type="submit" value="{% trans %}Add{% endtrans %}" class="button" />
+	<a class="button_action" href="{{ media.url_for_self(request.urlgen) }}">{% trans %}Cancel{% endtrans %}</a>
+        <input type="submit" value="{% trans %}Add{% endtrans %}" class="button_form" />
 	{{ csrf_token }}
       </div>
     </div>
