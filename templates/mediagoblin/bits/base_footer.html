@@ -18,13 +18,11 @@
 
 {%- block mediagoblin_footer %}
 <footer>
-	{% trans -%}
 		Orgulhosamente fornecido por <a href="https://mediagoblin.org/" title='Version {{ version }}'>MediaGoblin</a>, um projeto <a href="http://gnu.org/">GNU</a>.
-	{%- endtrans %}
-	{% trans source_link=app_config['source_link'] -%}
+	{%- block source source_link=app_config['source_link'] %}
 		Dispon&iacute;vel em <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">AGPL</a>. <a href="{{ source_link }}">C&oacute;digo fonte</a> deste site.
 		Mantido pela <a href="http://iikb.org" target="_blank">igreja insurgente Kopimista Brasileira</a>, <a href="http://piratas.xyz" target="_blank">PIRATAS.xyz</a> e pelo <a href="http://gti.pirata.xyz" target="_blank">GTI</a> do <a href="http://partidopirata.org" target="_blank">Partido Pirata do Brasil</a>.
-	{%- endtrans %}
+	{%- endblock source -%}
 	{% if app_config['show_tos'] %}
 		<p class="fine_print">
 			<a href="{{ request.urlgen('terms_of_service') }}">
