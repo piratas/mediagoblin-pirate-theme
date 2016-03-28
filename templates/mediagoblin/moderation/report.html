@@ -1,6 +1,6 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
-# Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
+# Copyright (C) 2011-2014 MediaGoblin contributors.  See AUTHORS.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -26,10 +26,12 @@
 {% if not report %}
   {% trans %}Sorry, no such report found.{% endtrans %}
 {% else %}
+  <div class="row">
     <a href="{{ request.urlgen('mediagoblin.moderation.reports') }}"
-       class="return_to_panel button"
+       class="return_to_panel button_action"
        title="Return to Reports Panel">
       {% trans %}Return to Reports Panel{% endtrans %}</a>
+  </div>
   <h2>{% trans %}Report{% endtrans %} #{{ report.id }}</h2>
   {% if report.is_comment_report() and report.comment %}
 
@@ -39,7 +41,7 @@
     <div id="comment-{{ comment.id }}"
         class="comment_wrapper">
       <div class="comment_author">
-        <img src="{{ request.staticdirect('/images/icon_comment.png') }}" />
+        <i class="fa fa-comment-o"></i> 
             <a href="{{ request.urlgen('mediagoblin.moderation.users_detail',
                             user=comment.get_author.username) }}"
                class="comment_authorlink">
@@ -66,7 +68,7 @@
   {% elif report.is_media_entry_report() and report.media_entry %}
 
     {% set media_entry = report.media_entry %}
-    <div class="media_thumbnail">
+    <div class="three columns media_thumbnail">
       <a href="{{ request.urlgen('mediagoblin.user_pages.media_home',
                             user=media_entry.get_uploader.username,
                             media=media_entry.slug_or_id) }}">
@@ -89,7 +91,7 @@
   {% else %}
     <h2>{% trans user_url=request.urlgen(
                         'mediagoblin.moderation.users_detail',
-                        user=report.reporter.username),
+                        user=report.reported_user.username),
                  user_name=report.reported_user.username %}
           CONTENT BY
             <a href="{{ user_url }}"> {{ user_name }}</a>
@@ -97,14 +99,11 @@
         {% endtrans %}
     </h2>
   {% endif %}
-  Reason for report:
+  {% trans %}Reason for report:{% endtrans %}
   <div id="report-{{ report.id }}"
        class="report_wrapper">
     <div class="report_author">
-        <img src="{{ request.staticdirect(
-                  '/images/icon_clipboard_alert.png') }}"
-             alt="Under a GNU LGPL v.3 or Creative Commons BY-SA 3.0 license.
-                  Distributed by the GNOME project http://www.gnome.org" />
+        <i class="fa fa-exclamation-circle"></i>
         <a href="{{ request.urlgen('mediagoblin.moderation.users_detail',
                         user=report.reporter.username) }}"
            class="report_authorlink">
@@ -124,14 +123,14 @@
       {{ report.report_content }}
     </div>
   </div>
-  {% if not report.is_archived_report() and 
-        not (report.reported_user.has_privilege('admin') and 
+  {% if not report.is_archived_report() and
+        not (report.reported_user.has_privilege('admin') and
         not request.user.has_privilege('admin')) %}
-    <input type=button value="{% trans %}Resolve{% endtrans %}" id=open_resolution_form />
+    <input type=button class="button_action" value="{% trans %}Resolve{% endtrans %}" id=open_resolution_form />
     <form action="" method="POST" id=resolution_form>
       {{ wtforms_util.render_divs(form) }}
       {{ csrf_token }}
-      <input type=submit id="submit_this_report" value="{% trans %}Resolve This Report{% endtrans %}"/>
+      <input type=submit class="button_action_highlight" id="submit_this_report" value="{% trans %}Resolve This Report{% endtrans %}"/>
     </form>
   <script>
   $(document).ready(function() {
@@ -140,7 +139,8 @@
   </script>
   {% elif report.is_archived_report() %}
     <h2><img src="{{ request.staticdirect('/images/icon_clipboard.png') }}"
-             alt="Under a GNU LGPL v.3 or Creative Commons BY-SA 3.0 license.
+             alt=""
+             title="Under a GNU LGPL v.3 or Creative Commons BY-SA 3.0 license.
                   Distributed by the GNOME project http://www.gnome.org" />
           {% trans %}Status{% endtrans %}:
     </h2>
@@ -150,7 +150,7 @@
       <p>{{ report.result }}</p>
     </pre>
   {% else %}
-    <input type=button disabled=disabled value="{% trans %}Resolve This Report{% endtrans %}"/>
+    <input type=button class="button_action" disabled=disabled value="{% trans %}Resolve This Report{% endtrans %}"/>
     <p>
       {% trans -%}
         You cannot take action against an administrator

@@ -1,6 +1,6 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
-# Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
+# Copyright (C) 2011-2014 MediaGoblin contributors.  See AUTHORS.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -53,7 +53,7 @@
 {% endblock %}
 
 {% block mediagoblin_sidebar %}
-  <h3>{% trans %}<i class="fa fa-download fa-fw"></i> Download{% endtrans %}</h3>
+  <h3><i class="fa fa-download fa-fw"></i> {% trans %}Download{% endtrans %}</h3>
   <ul>
     {% if 'original' in media.media_files %}
       <li><a href="{{ request.app.public_store.file_url(

@@ -1,6 +1,6 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
-# Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
+# Copyright (C) 2011-2014 MediaGoblin contributors.  See AUTHORS.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -34,8 +34,7 @@
         <div id="comment-{{ comment.id }}"
             class="comment_wrapper">
           <div class="comment_author">
-            <img
-              src="{{ request.staticdirect('/images/icon_comment.png') }}" />
+            <i class="fa fa-comment-o"></i> 
             <a href="{{ comment_author_url }}"
                class="comment_authorlink">
               {{- comment_author.username -}}
@@ -78,6 +77,6 @@
 
     {{- wtforms_util.render_divs(form) }}
 	{{ csrf_token }}
-    <input type=submit value="{% trans %}File Report {% endtrans %}" />
+    <input type=submit class="button_action" value="{% trans %}File Report {% endtrans %}" />
 </form>
 {% endblock %}
