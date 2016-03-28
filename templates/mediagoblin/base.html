@@ -58,6 +58,7 @@
     {% include 'mediagoblin/bits/body_start.html' %}
     {% block mediagoblin_body %}
       <div class="container">
+		<a href="{{ request.urlgen('mediagoblin.plugins.basicsearch') }}">{%- trans %}Busca{% endtrans -%}</a>
         {% include 'mediagoblin/bits/above_content.html' %}
         <div class="mediagoblin_content">
           {% include "mediagoblin/utils/messages.html" %}
