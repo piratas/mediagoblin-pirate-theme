@@ -16,31 +16,38 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #}
 
+<div name="direitos_autorais">
+  <p>A reprodu&ccedil;&atilde;o, a oferta, a comunica&ccedil;&atilde;o ao p&uacute;blico, e a disponibiliza&ccedil;&atilde;o de conte&uacute;dos de livros, sem autoriza&ccedil;&atilde;o das suas Editoras, violam a <a href="" target=_blank">Lei Federal 9<b>.1<!-- seus burros --></b>60/98</a> e constituem o crime de viola&ccedil;&atilde;&atilde;o de direitos autorais previsto no C&oacute;digo Penal Brasileiro.</p><!-- Valeu ADBR! -->
+</div>
+
+<hr>
+
 {% if request.user %}
-    <h1>Explore</h1>
+    <h1>{% trans %}Explore{% endtrans %}</h1>
   {% else %}
     <div class="row foot">
       <div class="eleven columns">
-        <h1>Ol&aacute;, bem vinda(o) &agrave; Biblioteca Pirata&excl;</h1>
-        <p>Este site usa <a href="http://mediagoblin.org">MediaGoblin</a>, um programa excelente para hospedar, gerenciar e compartilhar documentos, imagens, e material audiovisual.</p>
+        <h1>{% trans %}Hi there, welcome to this MediaGoblin site!{% endtrans %}</h1>
+        <p>{% trans %}This site is running <a href="http://mediagoblin.org">MediaGoblin</a>, an extraordinarily great piece of media hosting software.{% endtrans %}</p>
         {% if auth %}
+        <p>{% trans %}To add your own media, place comments, and more, you can log in with your MediaGoblin account.{% endtrans %}</p>
         {% if allow_registration %}
-          <p>Don't have one yet? It's easy!</p>
+          <p>{% trans %}Don't have one yet? It's easy!{% endtrans %}</p>
           <a class="button_action_highlight" href=
             {% if persona_auth is defined %}
               "javascript:;" id="persona_login1"
             {% else %}
               "{{ request.urlgen('mediagoblin.auth.register') }}"
             {% endif %}
+            {% trans %}
             >Create an account at this site</a>
             or
-		{% else %}
-        <p>Para adicionar sua pr&oacute;pria m&iacute;dia, publicar coment&aacute;rios e mais outras coisas, de forma an&ocirc;nima voc&ecirc; pode entrar com os seguintes dados:</p>
-		<p><u>Usu&aacute;rio</u>: <b>pirata</b></p>
-		<p><u>Senha</u>: <b>naosouagente</b></p>
+          {%- endtrans %}
         {% endif %}
         {% endif %}
-            <a class="button_action" href="./auth/login">Entrar</a>
+          {% trans %}
+            <a class="button_action" href="http://mediagoblin.readthedocs.org/">Set up MediaGoblin on your own server</a>
+          {%- endtrans %}
       </div>
       <div class="four columns offset-by-one">
         <img class="welcomeimage" src="{{ request.staticdirect('/images/home_goblin.png') }}">

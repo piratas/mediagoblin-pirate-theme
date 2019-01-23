@@ -1,6 +1,7 @@
 {#
 # GNU MediaGoblin -- federated, autonomous media hosting
 # Copyright (C) 2011, 2012 MediaGoblin contributors.  See AUTHORS.
+# Modifications Copyleft 2015-2019 Partido Pirata.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -29,6 +30,9 @@
 {%- endblock %}
 
 {% block mediagoblin_content %}
+  <div name="dados_login">
+    <p>Dados para login: <b>usu&aacute;rio: <i>pirata</i></b>, <b>senha: <i>naosouagente</i></b></p>
+  </div>
   <form action="{{ post_url }}"
         method="POST" enctype="multipart/form-data">
     {{ csrf_token }}

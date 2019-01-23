@@ -3,7 +3,7 @@ Tema Mediagoblin para Biblioteca Pirata
 
 Tema feito para a biblioteca pirata (biblioteca.partidopirata.org).
 Sorry for the brazilian portuguese everywhere.
-Based on / pirated from Airy and Sandy Seventies Speedboats.
+Based on / pirated from Airy.
 
 Licenças
 ---
