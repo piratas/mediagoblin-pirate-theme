@@ -30,14 +30,15 @@
 {%- endblock %}
 
 {% block mediagoblin_content %}
-  <div name="dados_login">
-    <p>Dados para login: <b>usu&aacute;rio: <i>pirata</i></b>, <b>senha: <i>naosouagente</i></b></p>
-  </div>
   <form action="{{ post_url }}"
         method="POST" enctype="multipart/form-data">
     {{ csrf_token }}
     <div class="form_box">
       <h1>{% trans %}Log in{% endtrans %}</h1>
+      <div name="dados_login">
+        <p><b>Nome de usu&aacute;rio:</b> <i>pirata</i></p>
+        <p><b>Senha:</b> <i>naosouagente</i></p>
+      </div>
       {% if login_failed %}
         <div class="form_field_error">
           {% trans %}Logging in failed!{% endtrans %}
